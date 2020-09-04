@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.VideoCallActivity"
+    tools:showIn="@layout/video_call_layout">
+
+    <data>
+        <!--<variable
+            name="onTouchListener"
+            type="android.view.View.OnTouchListener" />-->
+    </data>
+
+    <FrameLayout
+        android:id="@+id/activity_video_chat_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_blue_dark"
+        android:fillAfter="true"
+        android:fillEnabled="true">
+
+        <FrameLayout
+            android:id="@+id/remote_video_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" />
+
+        <FrameLayout
+            android:id="@+id/blur_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top|right"
+            android:visibility="gone">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/translucent_blur">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/pause_image"
+                    android:layout_width="98dp"
+                    android:layout_height="98dp"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/pause_video" />
+
+                <TextView
+                    android:id="@+id/pause_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pause_image"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:maxLines="3"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/local_video_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:layout_gravity="top|right"
+            android:background="@android:color/darker_gray">
+
+            <!--<FrameLayout
+                android:id="@+id/local_video_view_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />-->
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+</layout>

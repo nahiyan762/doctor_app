@@ -1,0 +1,477 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.sftelehealth.doctor.domain.model.Doctor" />
+
+        <variable
+            name="viewmodel"
+            type="com.sftelehealth.doctor.app.view.viewmodel.DoctorProfileFragmentViewModel" />
+
+        <variable
+            name="listener"
+            type="com.sftelehealth.doctor.app.listener.ProfileUpdateListener" />
+    </data>
+
+    <ScrollView xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        tools:context="com.sftelehealth.doctor.app.view.fragment.DoctorProfileFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/profile_header"
+                layout="@layout/main_profile_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                bind:item="@{item}"
+                bind:listener="@{listener}" />
+
+            <!-- ///////////////////NAME\\\\\\\\\\\\\\\\\\  -->
+            <LinearLayout
+                android:id="@+id/name_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:textColor="@color/grey_text" />
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.name}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_text" />
+            </LinearLayout>
+            <!-- ///////////////////NAME\\\\\\\\\\\\\\\\\\  -->
+
+
+            <!-- ///////////////////GENDER\\\\\\\\\\\\\\\\\\  -->
+            <LinearLayout
+                android:id="@+id/gender_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Gender"
+                        android:textColor="@color/grey_text" />
+
+                    <TextView
+                        android:id="@+id/gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.gender}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_text" />
+            </LinearLayout>
+            <!-- ///////////////////GENDER\\\\\\\\\\\\\\\\\\  -->
+
+            <!-- ///////////////////EMAIL\\\\\\\\\\\\\\\\\\  -->
+            <LinearLayout
+                android:id="@+id/email_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="EMAIL"
+                        android:textColor="@color/grey_text" />
+
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.email}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_text" />
+            </LinearLayout>
+            <!-- ///////////////////EMAIL\\\\\\\\\\\\\\\\\\  -->
+
+
+            <!-- ///////////////////REGNO\\\\\\\\\\\\\\\\\\  -->
+            <LinearLayout
+                android:id="@+id/registration_number_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Registration No"
+                        android:textColor="@color/grey_text" />
+
+                    <TextView
+                        android:id="@+id/registration_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.regNo}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_text" />
+
+            </LinearLayout>
+            <!-- ///////////////////REGNO\\\\\\\\\\\\\\\\\\  -->
+
+            <!-- ///////////////////WORKING-SINCE\\\\\\\\\\\\\\\\\\  -->
+            <LinearLayout
+                android:id="@+id/working_since_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Working Since"
+                        android:textColor="@color/grey_text" />
+
+                    <TextView
+                        android:id="@+id/working_since"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.workingSinceYears}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_text" />
+            </LinearLayout>
+            <!-- ///////////////////WORKING-SINCE\\\\\\\\\\\\\\\\\\  -->
+            <!-- ///////////////////QUALIFICATIONS\\\\\\\\\\\\\\\\\\  -->
+            <LinearLayout
+                android:id="@+id/qualifications_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10sp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Qualifications"
+                        android:textColor="@color/grey_text" />
+
+                    <TextView
+                        android:id="@+id/qualifications"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.qualification}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_text" />
+            </LinearLayout>
+            <!-- ///////////////////QUALIFICATIONS\\\\\\\\\\\\\\\\\\  -->
+
+            <!-- ///////////////////ASSOCIATED HOSPITALS\\\\\\\\\\\\\\\\\\  -->
+            <LinearLayout
+                android:id="@+id/associated_hospitals_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10sp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Associated Hospitals"
+                        android:textColor="@color/grey_text" />
+
+                    <TextView
+                        android:id="@+id/associated_hospitals"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.hospital}"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_text" />
+            </LinearLayout>
+            <!-- ///////////////////ASSOCIATED HOSPITALS\\\\\\\\\\\\\\\\\\  -->
+
+
+            <!-- ///////////////////MOBILE-NO\\\\\\\\\\\\\\\\\\  -->
+            <LinearLayout
+                android:id="@+id/mobile_number_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mobile No"
+                        android:textColor="@color/grey_text" />
+
+                    <TextView
+                        android:id="@+id/mobile_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.phone}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_text" />
+            </LinearLayout>
+            <!-- ///////////////////MOBILE-NO\\\\\\\\\\\\\\\\\\  -->
+
+            <!-- ///////////////////CATEGORY\\\\\\\\\\\\\\\\\\  -->
+            <LinearLayout
+                android:id="@+id/category_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Category"
+                        android:textColor="@color/grey_text" />
+
+                    <TextView
+                        android:id="@+id/category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.doctorCategoryTitle}"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_text" />
+            </LinearLayout>
+            <!-- ///////////////////CATEGORY\\\\\\\\\\\\\\\\\\  -->
+
+            <!-- ///////////////////CITY\\\\\\\\\\\\\\\\\\  -->
+            <LinearLayout
+                android:id="@+id/city_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="City"
+                        android:textColor="@color/grey_text" />
+
+                    <TextView
+                        android:id="@+id/city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.location}"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/preferred_languages_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Preferred Language"
+                        android:textColor="@color/grey_text" />
+
+                    <TextView
+                        android:id="@+id/preferred_languages"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.languages}"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_text" />
+            </LinearLayout>
+
+            <!-- ///////////////////DIGITAL SIGNATURE\\\\\\\\\\\\\\\\\\  -->
+            <LinearLayout
+                android:id="@+id/signature_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:orientation="vertical">
+
+
+                <Button
+                    android:id="@+id/add_update_signature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> listener.addUpdateSignature()}"
+                    android:text="@string/add_signature" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/signature"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:adjustViewBounds="true"
+                        android:background="@android:color/transparent"
+                        android:rotation="90"
+                        android:scaleType="centerInside" />
+
+                    <com.sftelehealth.doctor.app.view.custom.CustomFontTextView
+                        android:id="@+id/addSignatureMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:gravity="center"
+                        android:text="Click on Add Signature button\n to add signature"
+                        android:visibility="gone"/>
+
+                </FrameLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_text" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/signature_container"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginTop="12dp"
+                android:onClick="@{() -> listener.validateAndSaveDoctorModel()}"
+                android:text="@string/save_btn"
+                android:visibility="@{viewmodel.validateModel ? View.VISIBLE : View.GONE}" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

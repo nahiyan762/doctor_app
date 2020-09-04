@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.sftelehealth.doctor.app.view.fragment.CallbackDetailsActivityFragment">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="callbackRequest"
+            type="com.sftelehealth.doctor.domain.model.CallbackRequest" />
+
+        <variable
+            name="viewmodel"
+            type="com.sftelehealth.doctor.app.view.viewmodel.CallbackDetailsActivityFragmentViewModel" />
+
+        <variable
+            name="listener"
+            type="com.sftelehealth.doctor.app.listener.CallbackDetailsEventListener" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/profile_details_container"
+                layout="@layout/callback_details_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                bind:callbackRequest="@{callbackRequest}"
+                bind:viewmodel="@{viewmodel}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="64dp"
+                    android:layout_marginRight="64dp"
+                    android:gravity="center"
+                    android:text="@string/appointment_request"
+                    android:textStyle="bold"
+                    android:visibility="@{safeUnbox(viewmodel.isVideoCallbackTimeInfoVisible) ? View.VISIBLE : View.GONE}"/>
+
+                <include
+                    android:id="@+id/appointment_time_info"
+                    layout="@layout/appointment_time_info_layout"
+                    bind:viewmodel="@{viewmodel}"/>
+
+                <TextView
+                    android:id="@+id/message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="64dp"
+                    android:layout_marginRight="64dp"
+                    android:gravity="center"
+                    android:text="@{viewmodel.message}"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/add_prescription_button"
+                    style="@style/Base.TextAppearance.AppCompat.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:onClick="@{() -> listener.addViewPrescription()}"
+                    android:text="view/add medical advice"
+                    android:visibility="@{safeUnbox(viewmodel.isPrescriptionButtonVisible) ? View.VISIBLE : View.GONE}" />
+
+                <Button
+                    android:id="@+id/view_prior_case_details"
+                    style="@style/Base.TextAppearance.AppCompat.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="view case documents"
+                    android:onClick="@{() -> listener.showPriorCaseDetailsView()}"
+                    android:visibility="@{safeUnbox(viewmodel.isPriorCaseDetailsLayoutVisible) ? View.VISIBLE : View.GONE}" />
+
+                <!-- android:visibility="@{safeUnbox(callbackRequest.getDocs.size() > 0) ? View.VISIBLE : View.GONE}" /> -->
+
+            </LinearLayout>
+
+            <include
+                android:id="@+id/accept_callback_request_layout"
+                layout="@layout/row_call_patient"
+                bind:listener="@{listener}"
+                bind:viewmodel="@{viewmodel}" />
+
+            <include
+                android:id="@+id/call_button_layout"
+                layout="@layout/call_button_layout"
+                bind:listener="@{listener}"
+                bind:viewmodel="@{viewmodel}" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/loading_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:background="@color/white">
+
+            <com.github.silvestrpredko.dotprogressbar.DotProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
+                custom:amount="4"
+                custom:duration="@android:integer/config_mediumAnimTime"
+                custom:endColor="@color/colorPrimary"
+                custom:startColor="@color/colorPrimary_20"
+                custom:animationDirection="left"/>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</layout>

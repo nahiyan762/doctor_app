@@ -1,0 +1,136 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.sftelehealth.doctor.app.view.fragment.CaseDetailsActivityFragment">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="caseItem"
+            type="com.sftelehealth.doctor.domain.model.Case" />
+
+        <variable
+            name="listener"
+            type="com.sftelehealth.doctor.app.listener.CaseDetailsEventListener" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/completeContainerId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/patient_header"
+                layout="@layout/prescription_list_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                bind:caseItem="@{caseItem}"
+                bind:listener="@{listener}" />
+
+            <LinearLayout
+                android:id="@+id/documents_header"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@+id/patient_header"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/documents_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Documents"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_background" />
+
+                <include
+                    android:id="@+id/documents_list_container"
+                    layout="@layout/include_documents"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    bind:caseItem="@{caseItem}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/prescription_header"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/documents_header"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/prescription_list_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/medical_advice_title"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_background" />
+
+                <include
+                    android:id="@+id/prescription_list_container"
+                    layout="@layout/include_prescriptions"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/add_prescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="8dp"
+                android:onClick="@{(view) -> listener.createNewPrescription()}"
+                android:visibility="@{safeUnbox(caseItem.isCreatePrescriptionVisible()) ? View.VISIBLE : View.INVISIBLE}"
+                app:fabSize="normal"
+                app:srcCompat="@drawable/plus"
+                app:useCompatPadding="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/loading_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:visibility="visible">
+
+            <com.github.silvestrpredko.dotprogressbar.DotProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                custom:amount="4"
+                custom:animationDirection="left"
+                custom:duration="@android:integer/config_mediumAnimTime"
+                custom:endColor="@color/colorPrimary"
+                custom:startColor="@color/colorPrimary_20" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+</layout>

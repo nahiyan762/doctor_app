@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewmodel"
+            type="com.sftelehealth.doctor.app.view.viewmodel.CallbackDetailsActivityFragmentViewModel" />
+
+        <variable
+            name="listener"
+            type="com.sftelehealth.doctor.app.listener.CallbackDetailsEventListener"/>
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/callDoctorContainer"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"
+        android:minHeight="120dp"
+        android:padding="16dp"
+        android:visibility="@{safeUnbox(viewmodel.isAcceptCallbackLayoutVisible) ? View.VISIBLE : View.INVISIBLE}">
+
+        <TextView
+            android:id="@+id/selected_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="0 Hours to call"
+            android:textColor="@color/grey_text"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:paddingLeft="48dp">
+
+            <FrameLayout
+                android:id="@+id/callback_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> listener.acceptOrRejectCallback(true)}"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/call_btn"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_circle_blue"
+                    android:gravity="center"
+                    android:text=""
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/normal_text"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:padding="4dp"
+                    android:src="@drawable/greentick" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/call_now_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/callback_layout"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="12dp"
+                android:text="@string/accept_request"
+                android:textColor="@color/grey_text"
+                android:textSize="@dimen/small_size" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:paddingRight="48dp">
+
+            <FrameLayout
+                android:id="@+id/actionButtonContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right"
+                android:onClick="@{() -> listener.acceptOrRejectCallback(false)}"
+                android:padding="1dp">
+
+                <TextView
+                    android:id="@+id/callback_btn"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bg_circle_blue"
+                    android:gravity="center"
+                    android:text=""
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/normal_text"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/cancel_request"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:padding="4dp"
+                    android:src="@drawable/cross"
+                    android:visibility="visible" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/cancel_request_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/actionButtonContainer"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="12dp"
+                android:text="@string/reject_request"
+                android:textColor="@color/grey_text"
+                android:textSize="@dimen/small_size" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

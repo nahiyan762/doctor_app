@@ -1,0 +1,163 @@
+allprojects {
+  repositories {
+    jcenter()
+  }
+}
+
+ext {
+  //Android
+  androidBuildToolsVersion = "28.0.3"
+  androidMinSdkVersion = 21
+  androidTargetSdkVersion = 28
+  androidCompileSdkVersion = 28
+
+  //Libraries
+  daggerVersion = '2.0.2'
+  recyclerViewVersion = '1.0.0-beta01'
+  /*rxJavaVersion = '1.0.14'
+  rxAndroidVersion = '1.0.1'*/
+  rxJavaVersion = '2.1.0'
+  rxAndroidVersion = '2.0.1'
+  //rxJavaAdapterVersion = '2.0.2'
+  rxRelayVersion = '2.0.0'
+  javaxAnnotationVersion = '1.0'
+  gsonVersion = '2.7'
+  okHttpVersion = '3.8.0' //'2.5.0'
+  loggingIntercepter = '3.8.0'  // '3.3.1'
+  androidAnnotationsVersion = '21.0.3'
+  retrofitVersion = '2.3.0' // 2.3.0 and above has 2 parameters for Calladapter class
+  retrofitAdapterVersion = '2.3.0'
+  gsonConvertorVersion = '2.1.0'
+  firebaseJobVersion = '0.6.0'
+  firebaseCoreVersion = '17.1.0'
+  firebaseVersion = '17.0.1'
+  crashlyticsVersion = '2.10.1'
+  googleSupportLibraryVersion = '1.0.0-beta01'
+  stethoVersion = '1.4.1'
+  arrowVersion = '1.0.0'
+  room = '2.0.0-beta01'
+  lifecycle = '2.0.0-beta01'
+  lifecycleJava8 = '2.0.0-beta01'
+  paging = '2.0.0-beta01'
+  pagingRxJava = '1.0.0-alpha1'
+  picasso = '2.5.2'
+  timber = '4.7.1'
+  countryCodePickerVersion = '2.2.9'
+
+  constraintLayout = '1.1.2'
+
+  //Testing
+  robolectricVersion = '3.8'
+  jUnitVersion = '4.12'
+  assertJVersion = '1.7.1'
+  mockitoVersion = '1.9.5'
+  dexmakerVersion = '1.0'
+  espressoVersion = '3.1.0-alpha4'
+  testingSupportLibVersion = '0.1'
+  testRunnerVersion = '1.1.0-alpha4'
+
+  //Development
+  leakCanaryVersion = '1.3.1'
+
+
+  presentationDependencies = [
+          daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
+          dagger:             "com.google.dagger:dagger:${daggerVersion}",
+          recyclerView:       "androidx.recyclerview:recyclerview:${recyclerViewVersion}",
+          gson:               "com.google.code.gson:gson:${gsonVersion}",
+          loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${loggingIntercepter}",
+          rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+          rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+          rxRelay:            "com.jakewharton.rxrelay2:rxrelay:${rxRelayVersion}",
+          //retrofitAdapter:    "com.squareup.retrofit2:adapter-rxjava2:${retrofitAdapterVersion}",
+          javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+          firebaseJob:        "com.firebase:firebase-jobdispatcher-with-gcm-dep:${firebaseJobVersion}",
+          firebaseCore:       "com.google.firebase:firebase-core:${firebaseCoreVersion}",
+          firebaseAnalytics:  "com.google.firebase:firebase-analytics:${firebaseVersion}",
+          crashlytics:        "com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}",
+          appcompat_v7:       "androidx.appcompat:appcompat:${googleSupportLibraryVersion}",
+          design:             "com.google.android.material:material:${googleSupportLibraryVersion}",
+          cardview_v7:        "androidx.cardview:cardview:${googleSupportLibraryVersion}",
+          support_v4:         "androidx.legacy:legacy-support-v4:${googleSupportLibraryVersion}",
+          exifinterface:      "androidx.exifinterface:exifinterface:${googleSupportLibraryVersion}",
+          stetho:             "com.facebook.stetho:stetho:${stethoVersion}",
+          stethoOKHttp:       "com.facebook.stetho:stetho-okhttp3:${stethoVersion}",
+          room:               "androidx.room:room-runtime:${room}",
+          timber:             "com.jakewharton.timber:timber:${timber}",
+          picasso:            "com.squareup.picasso:picasso:${picasso}",
+          paging:             "androidx.paging:paging-runtime:${paging}",
+          pagingRxJava:       "android.arch.paging:rxjava2:${pagingRxJava}",
+          lifecycleJava8:     "androidx.lifecycle:lifecycle-common-java8:${lifecycleJava8}",
+          lifecycle:          "androidx.lifecycle:lifecycle-extensions:${lifecycle}",
+          constraintLayout:   "com.android.support.constraint:constraint-layout:${constraintLayout}",
+          countryCodePicker:  "com.hbb20:ccp:${countryCodePickerVersion}"
+  ]
+
+  presentationTestDependencies = [
+          mockito:            "org.mockito:mockito-core:${mockitoVersion}",
+          dexmaker:           "com.google.dexmaker:dexmaker:${dexmakerVersion}",
+          dexmakerMockito:    "com.google.dexmaker:dexmaker-mockito:${dexmakerVersion}",
+          espresso:           "androidx.test.espresso:espresso-core:${espressoVersion}",
+          testingSupportLib:  "com.android.support.test:testing-support-lib:${testingSupportLibVersion}",
+          robolectric:        "org.robolectric:robolectric:${robolectricVersion}",
+          testRunner:         "androidx.test:runner:${testRunnerVersion}"
+  ]
+
+  domainDependencies = [
+          daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
+          dagger:             "com.google.dagger:dagger:${daggerVersion}",
+          gson:               "com.google.code.gson:gson:${gsonVersion}",
+          javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+          rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+          arrow:              "com.fernandocejas:arrow:${arrowVersion}"
+  ]
+
+  domainTestDependencies = [
+          junit:              "junit:junit:${jUnitVersion}",
+          mockito:            "org.mockito:mockito-core:${mockitoVersion}"
+  ]
+
+  dataDependencies = [
+          daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
+          dagger:             "com.google.dagger:dagger:${daggerVersion}",
+          okHttp:             "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+          gson:               "com.google.code.gson:gson:${gsonVersion}",
+          rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+          rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+          javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+          androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
+          retrofit:           "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+          gsonConvertor:      "com.squareup.retrofit2:converter-gson:${gsonConvertorVersion}",
+          loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${loggingIntercepter}",
+          stetho:             "com.facebook.stetho:stetho:${stethoVersion}",
+          stethoOKHttp:       "com.facebook.stetho:stetho-okhttp3:${stethoVersion}",
+          retrofitAdapter:    "com.squareup.retrofit2:adapter-rxjava2:${retrofitAdapterVersion}",
+          appcompat_v7:       "androidx.appcompat:appcompat:${googleSupportLibraryVersion}"
+  ]
+
+  dataTestDependencies = [
+          junit:              "junit:junit:${jUnitVersion}",
+          assertj:            "org.assertj:assertj-core:${assertJVersion}",
+          mockito:            "org.mockito:mockito-core:${mockitoVersion}",
+          robolectric:        "org.robolectric:robolectric:${robolectricVersion}"
+  ]
+
+  developmentDependencies = [
+          leakCanary:         "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
+  ]
+
+  videoDependencies = [
+          appcompat_v7:       "androidx.appcompat:appcompat:${googleSupportLibraryVersion}",
+          design:             "com.google.android.material:material:${googleSupportLibraryVersion}",
+          rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+          rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+          support_v4:         "androidx.legacy:legacy-support-v4:${googleSupportLibraryVersion}",
+          gson:               "com.google.code.gson:gson:${gsonVersion}",
+          cardview_v7:        "androidx.cardview:cardview:${googleSupportLibraryVersion}",
+          lifecycleJava8:     "androidx.lifecycle:lifecycle-common-java8:${lifecycleJava8}",
+          lifecycle:          "androidx.lifecycle:lifecycle-extensions:${lifecycle}",
+          daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
+          dagger:             "com.google.dagger:dagger:${daggerVersion}",
+          constraintLayout:   "androidx.constraintlayout:constraintlayout:${constraintLayout}"
+  ]
+}

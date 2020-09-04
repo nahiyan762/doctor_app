@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item"
+            type="com.sftelehealth.doctor.domain.model.Doctor" />
+        <variable
+            name="listener"
+            type="com.sftelehealth.doctor.app.listener.ProfileUpdateListener" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/circular_image_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="125dp"
+            android:layout_height="125dp">
+
+            <ImageView
+                android:id="@+id/doctor_image"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@{item.image}"
+                imageType="circle"
+                android:onClick="@{() -> listener.updateImage()}"/>
+
+            <ImageView
+                android:id="@+id/doctor_image_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom|right"
+                android:background="@drawable/camera_icon" />
+
+            <TextView
+                android:id="@+id/upload_status"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:background="@color/colorTabTint"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                android:gravity="center"
+                android:text="0%"
+                android:textSize="28sp"/>
+
+        </FrameLayout>
+
+
+
+
+
+    </RelativeLayout>
+
+</layout>

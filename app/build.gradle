@@ -1,0 +1,307 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+        maven { url 'https://plugins.gradle.org/m2/'}
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.11.0, 0.99.99]'
+    }
+}
+
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+
+android {
+
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+
+    defaultConfig {
+        applicationId "com.sftelehealth..doctor"
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
+
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        release {
+            keyAlias '<alias>'
+            keyPassword '<alias_password>'
+            storePassword '<keystore_password>'
+            storeFile file('<keystore_path>')
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //signingConfig signingConfigs.release
+
+            ext.crashlyticsApiSecret = "a5d875d2dbea571720571c3857a2763bd0157cfde2658bb000a6b30de170664d"
+            ext.crashlyticsApiKey = "ff082c411e218a7dafbf1a70ecdb8ba89e8e573f"
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            ext.crashlyticsApiSecret = "6bc346e8a1c15b3114d8f04152062b7647a3e56bf0fbbc4640dff206463b0177"
+            ext.crashlyticsApiKey = "0494dcddacabda51968f44663e406abe05d98fb8"
+        }
+    }
+
+    /*splits {
+        abi {
+
+            // Enables building multiple APKs per ABI.
+            enable true
+
+            // By default all ABIs are included, so use reset() and include to specify that we only
+            // want APKs for arm64-v8a, armeabi-v7a, x86 and x86_64.
+            // Resets the list of ABIs that Gradle should create APKs for to none.
+            reset()
+
+            // Specifies a list of ABIs that Gradle should create APKs for.
+            include 'arm64-v8a', 'armeabi-v7a', 'x86'
+
+            // Specifies that we do not want to also generate a universal APK that includes all ABIs.
+            universalApk false
+        }
+    }*/
+
+    // Instead, use the bundle block to control which types of configuration APKs
+    // you want your app bundle to support.
+    bundle {
+        language {
+            // Specifies that the app bundle should not support
+            // configuration APKs for language resources. These
+            // resources are instead packaged with each base and
+            // dynamic feature APK.
+            enableSplit = false
+        }
+        density {
+            // This property is set to true by default.
+            enableSplit = true
+        }
+        abi {
+            // This property is set to true by default.
+            enableSplit = true
+        }
+    }
+
+    flavorDimensions "app", "environment"
+
+    productFlavors {
+
+        doctor24x7 {
+
+            applicationId "com.sftelehealth.doctor"
+
+            buildConfigField 'String', 'APP_NAME', '"Doctor 24x7"'
+            resValue "string", "package_name", applicationId
+
+            versionCode 1
+            versionName "1.0"
+
+            // These fields will be same as dev and prod
+            manifestPlaceholders = [manifestApplicationId          : "${applicationId}",
+                                    onesignal_app_id               : "<onesignal_app_id>",
+                                    onesignal_google_project_number: "<google_project_number>"]
+
+            dimension "app"
+        }
+        dev {
+
+            dimension "environment"
+        }
+        prod {
+
+            dimension "environment"
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions.incremental = false
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/rxjava.properties'
+        exclude 'META-INF/MANIFEST.MF'
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+    maven { url 'https://maven.google.com' }
+}
+
+dependencies {
+
+    // implementation fileTree(dir: 'libs', include: ['*.jar'])
+    def presentationDependencies = rootProject.ext.presentationDependencies
+    def presentationTestDependencies = rootProject.ext.presentationTestDependencies
+
+    // api 'com.google.android.play:core:1.3.0'
+
+    implementation project(':domain')
+    implementation project(':data')
+
+    // video module
+    implementation project(':video')
+
+    // fortisDevReleaseImplementation project(path: ':video', configuration: 'fortisDevRelease')
+    // fortisDevDebugImplementation project(path: ':video', configuration: 'fortisDevDebug')
+
+    annotationProcessor presentationDependencies.daggerCompiler
+    implementation presentationDependencies.dagger
+
+    // implementation presentationDependencies.butterKnife
+    implementation presentationDependencies.recyclerView
+    implementation presentationDependencies.gson
+
+    // implementation presentationDependencies.loggingInterceptor
+    implementation presentationDependencies.rxJava
+    implementation presentationDependencies.rxAndroid
+    implementation presentationDependencies.rxRelay
+
+    // implementation presentationDependencies.retrofitAdapter
+    implementation presentationDependencies.firebaseJob
+    implementation presentationDependencies.firebaseCore
+    implementation presentationDependencies.firebaseAnalytics
+    implementation presentationDependencies.crashlytics
+
+    implementation presentationDependencies.appcompat_v7
+    implementation presentationDependencies.design
+    implementation presentationDependencies.cardview_v7
+    implementation presentationDependencies.support_v4
+    implementation presentationDependencies.exifinterface
+
+    // MultiDex
+    implementation 'androidx.multidex:multidex:2.0.0'
+
+    // In App Updates
+    implementation 'com.google.android.play:core:1.5.0'
+
+    // Architecture components
+
+    // Lifecycle
+
+    // implementation "android.arch.lifecycle:runtime:1.1.0"
+
+    // annotationProcessor "android.arch.lifecycle:compiler:1.1.0"
+
+    // For lifecycle Java 8 support
+    implementation presentationDependencies.lifecycleJava8
+
+    // LiveData and ViewModel
+    implementation presentationDependencies.lifecycle
+
+    // support for reactive streams
+
+    // implementation "android.arch.lifecycle:reactivestreams:1.1.0"
+
+    // Room
+    implementation presentationDependencies.room
+
+    // Paging
+    implementation presentationDependencies.paging
+    implementation presentationDependencies.pagingRxJava
+
+    // Development
+    debugImplementation developmentDependencies.leakCanary
+    compileOnly presentationDependencies.javaxAnnotation
+    implementation presentationDependencies.picasso
+
+    // PDF Viewer
+    implementation 'com.github.barteksc:pdfium-android:1.9.0'
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.1'
+
+    // One Signal
+    implementation 'com.onesignal:OneSignal:[3.9.2, 4.0.0)'
+
+    // Logging
+    implementation presentationDependencies.timber
+
+    // Dot ProgressBar
+    implementation 'com.github.silvestrpredko:dot-progress-bar:1.0'
+
+    // Old Secured preference
+    implementation 'com.scottyab:secure-preferences-lib:0.1.4'
+
+    // subsampling images
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
+
+    // Country Code Picker
+    implementation presentationDependencies.countryCodePicker
+
+    // Test
+    // compile 'com.facebook.stetho:stetho:1.5.0'
+    testImplementation 'junit:junit:4.12'
+
+    androidTestImplementation presentationTestDependencies.mockito
+    androidTestImplementation presentationTestDependencies.dexmaker
+    androidTestImplementation presentationTestDependencies.dexmakerMockito
+    androidTestImplementation presentationTestDependencies.espresso
+    androidTestImplementation presentationTestDependencies.testingSupportLib
+    testImplementation presentationTestDependencies.robolectric
+    testImplementation "org.robolectric:shadows-multidex:3.8"
+    testImplementation "org.robolectric:shadows-playservices:3.8"
+    testImplementation "org.robolectric:shadows-supportv4:3.8"
+    testImplementation "org.robolectric:shadows-httpclient:3.8"
+    testImplementation 'androidx.test:monitor:1.1.0-alpha4'
+    testImplementation 'androidx.test:rules:1.1.0-alpha4'
+    androidTestImplementation presentationTestDependencies.testRunner
+
+    implementation 'com.google.android.gms:play-services-base:16.0.1'
+    implementation 'com.google.android.gms:play-services-identity:16.0.0'
+
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:16.0.0'
+
+    // One Signal
+
+    // Required for OneSignal, even if you have added FCM.
+
+    // Required for geotagging
+
+    // play-services-analytics is only needed when using 8.1.0 or older.
+
+    // implementation 'com.google.android.gms:play-services-analytics:+'
+
+    // implementation 'com.jakewharton.threetenabp:threetenabp:1.0.4'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    compileOnly 'org.jetbrains:annotations-java5:15.0'
+}
+
+// Map for the version code that gives each ABI a value.
+ext.abiCodes = ['arm64-v8a': 3, 'armeabi-v7a': 4, 'x86': 5]
+
+// Add the following line to the bottom of the file:
+apply plugin: 'com.google.gms.google-services'  // Google Play services Gradle plugin

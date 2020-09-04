@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.sftelehealth.doctor">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+
+    <application
+        android:name="com.sftelehealth.doctor.app.Doctor24x7Application"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:testOnly="false"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:theme="@style/AppTheme">
+
+        <!-- Example: Sets all OneSignal notification's accent color to Green by default. -->
+        <!-- Color format is in ARGB. -->
+        <meta-data
+            android:name="com.onesignal.NotificationAccentColor.DEFAULT"
+            android:value="@string/primary_color_string" />
+        <meta-data
+            android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:value="DISABLE" />
+        <!--<meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="true" />-->
+
+        <!-- Fabric key -->
+        <!--<meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="${fabricApiKey}" />-->
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name="com.sftelehealth.doctor.app.view.activity.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="app.doctor24x7.in"
+                    android:pathPattern="/login"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="${applicationId}.intent.action.LOGIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.sftelehealth.doctor.app.view.activity.ConfirmationActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.sftelehealth.doctor.app.view.activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.sftelehealth.doctor.app.view.activity.ProfileDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.sftelehealth.doctor.app.view.activity.CaseDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.sftelehealth.doctor.app.view.activity.CallbackDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.sftelehealth.doctor.app.view.activity.PrescriptionActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <service
+            android:name="com.sftelehealth.doctor.app.services.NotificationTextToSpeechService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name="com.sftelehealth.doctor.app.services.UpdateContactIntentService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity
+            android:name="com.sftelehealth.doctor.app.view.activity.PDFViewerActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.sftelehealth.doctor.app.view.activity.SignatureActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.sftelehealth.doctor.app.utils.crop.CropImageActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.sftelehealth.doctor.app.view.activity.TermsAndConditionsActivity"
+            android:label="@string/title_activity_terms_and_conditions"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <service
+            android:name="com.sftelehealth.doctor.app.services.CleanUpSpaceService"
+            android:exported="false"></service>
+
+        <!--<receiver
+            android:name=".app.receiver.SMSReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED" />
+            </intent-filter>
+        </receiver>-->
+
+    </application>
+
+</manifest>

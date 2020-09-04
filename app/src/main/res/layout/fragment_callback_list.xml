@@ -1,0 +1,57 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.sftelehealth.doctor.app.view.viewmodel.LoginFragmentViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/callback_request_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.sftelehealth.doctor.app.view.custom.CustomFontTextView
+            android:id="@+id/no_callback_requests"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="24dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/no_callback_requests"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:id="@+id/loadingContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:background="@color/white">
+
+            <com.github.silvestrpredko.dotprogressbar.DotProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
+                custom:amount="4"
+                custom:duration="@android:integer/config_mediumAnimTime"
+                custom:endColor="@color/colorPrimary"
+                custom:startColor="@color/colorPrimary_20"
+                custom:animationDirection="left"/>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</layout>

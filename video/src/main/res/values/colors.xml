@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="colorPrimary">@color/lightish_blue</color>
+
+    <color name="green">#3acb71</color>
+    <color name="dark_grey">#696969</color>
+
+    <color name="white">#FFF</color>
+    <color name="lightish_blue">#447eff</color>
+
+    <color name="translucent_black">#10000000</color>
+    <color name="translucent_blur">#08111111</color>
+
+</resources>

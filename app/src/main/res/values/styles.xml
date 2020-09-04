@@ -1,0 +1,305 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="android:windowAnimationStyle">@style/ActivityTransition</item>-->
+        <!--<item name="android:background">@color/pale_white</item>-->
+
+        <!-- for Bottom Sheet Dialog -->
+        <!--<item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>-->
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--<item name="android:windowAnimationStyle">@style/ActivityTransition</item>-->
+
+        <!-- for Bottom Sheet Dialog -->
+        <!--<item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>-->
+    </style>
+
+    <style name="AppTheme.NoActionBar.Transparent" parent="Theme.Transparent">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--<item name="android:windowAnimationStyle">@style/ActivityTransition</item>-->
+
+        <!-- for Bottom Sheet Dialog -->
+        <!--<item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>-->
+    </style>
+
+    <style name="ActivityTransition" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@android:anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@android:anim/slide_out_right</item>
+    </style>
+
+    <style name="Theme.Transparent" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- TextView Styles -->
+    <style name="TextAppearance" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:padding">2dp</item>
+    </style>
+
+    <style name="TextAppearance.Heading" parent="@style/TextAppearance">
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textColor">@color/brownish_grey</item>
+
+        <!-- cannot be defined in the style, use "textStyle" instead -->
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Heading.Normal" parent="@style/TextAppearance">
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textColor">@color/brownish_grey</item>
+        <item name="android:textAllCaps">false</item>
+
+        <!-- cannot be defined in the style, use "textStyle" instead -->
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.SubHeading" parent="@style/TextAppearance">
+        <item name="android:textSize">@dimen/text_14</item>
+        <item name="android:textColor">@color/brownish_grey</item>
+    </style>
+
+    <style name="TextAppearance.SubHeading.Normal" parent="@style/TextAppearance">
+        <item name="android:textSize">@dimen/text_14</item>
+        <item name="android:textColor">@color/brownish_grey</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="TextAppearance.Info" parent="TextAppearance">
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:textColor">@color/grey_text</item>
+    </style>
+
+    <style name="TextAppearance.Info.Normal" parent="TextAppearance">
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:textColor">@color/grey_text</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="TextAppearance.Prefix" parent="TextAppearance">
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Blue" parent="TextAppearance">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Blue.Normal" parent="TextAppearance">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="TextAppearance.Hyperlink" parent="TextAppearance">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/text_10</item>
+    </style>
+
+    <style name="TextAppearance.NumberData" parent="TextAppearance">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/text_28</item>
+    </style>
+
+    <style name="TextAppearance.MetricData" parent="TextAppearance">
+        <item name="android:textColor">@color/cool_blue</item>
+        <item name="android:textSize">@dimen/text_16</item>
+    </style>
+
+    <style name="TextAppearance.CoachMarks.Title" parent="TextAppearance.Info.Normal">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:gravity">left</item>
+        <item name="fontName">bold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.CoachMarks.Message" parent="TextAppearance.Info.Normal">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:gravity">left</item>
+        <item name="fontName">bold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- EditText Styles -->
+    <style name="EditText.General" parent="@style/Widget.AppCompat.EditText">
+        <item name="android:selectableItemBackground">@drawable/editext_background</item>
+        <item name="android:paddingTop">@dimen/edittext_padding</item>
+        <item name="android:paddingBottom">@dimen/edittext_padding</item>
+        <item name="android:textCursorDrawable">@drawable/cursor</item>
+        <item name="android:textColorHint">@color/grey_text</item>
+        <!--<item name="android:textSize">@dimen/text_12</item>-->
+        <item name="edittextfontHint">Montserrat-Regular.ttf</item>
+    </style>
+
+    <!-- TextInputLayout -->
+    <style name="TextInputLayoutApprearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/grey_text</item>
+        <item name="android:textColorHint">@color/grey_text</item>
+        <item name="android:textColorHighlight">@color/grey_text</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_12</item>
+    </style>
+
+    <!-- Button Style -->
+    <style name="ButtonAppearance.General" parent="@style/Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_background_general</item>
+        <!--<item name="background">@drawable/button_ripple_background</item>-->
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_14</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingLeft">52dp</item>
+        <item name="android:paddingRight">52dp</item>
+    </style>
+
+    <!-- Floating action button -->
+    <style name="FloatingActionButton.Normal" parent="Widget.Design.FloatingActionButton">
+        <item name="fabSize">normal</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+    </style>
+
+    <!-- Dialog Animation -->
+
+    <style name="DialogAppearance.Bottom" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/dialog_slide_up</item>
+        <item name="android:windowExitAnimation">@anim/dialog_slide_down</item>
+    </style>
+
+    <!-- DatePicker Dialog -->
+    <style name="DatePickerAppearance" parent="@android:style/Theme.Holo.Light.Dialog.NoActionBar"></style>
+
+    <!-- Loading Progress Bar style -->
+    <style name="AppTheme.ProgressBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:visibility">visible</item>
+    </style>
+
+    <!-- Retry Button style -->
+    <style name="AppTheme.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!-- toolbar styling -->
+    <!--<style name="ToolBarWithNavigationBack">
+        <item name="navigationIcon">@drawable/btn_back</item>
+    </style>-->
+
+    <style name="TextAppearance.Tab" parent="TextAppearance.Design.Tab">
+        <!--<item name="tabMaxWidth">@dimen/tab_max_width</item>-->
+        <!--<item name="tabIndicatorColor">?attr/colorAccent</item>-->
+        <item name="tabIndicatorColor">@color/colorPrimary</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabPaddingStart">12dp</item>
+        <item name="tabPaddingEnd">12dp</item>
+        <item name="tabBackground">?attr/selectableItemBackground</item>
+        <item name="tabTextAppearance">@style/TextAppearance.SubHeading</item>
+        <item name="tabSelectedTextColor">@color/colorPrimary</item>
+    </style>
+
+    <!-- DialogFragment -->
+    <style name="DialogAppearance.Patient" parent="AlertDialog.AppCompat.Light">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:typeface">serif</item>
+    </style>
+
+    <!-- Style Crop -->
+    <style name="Crop"></style>
+
+    <style name="Crop.DoneCancelBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/crop__bar_height</item>
+        <item name="android:orientation">horizontal</item>
+        <!--<item name="android:divider">@drawable/crop__divider</item>-->
+        <item name="android:showDividers">middle</item>
+        <item name="android:dividerPadding">12dp</item>
+        <item name="android:background">@color/crop__button_bar</item>
+    </style>
+
+    <style name="Crop.ActionButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@color/black</item>
+        <!--<item name="android:background">@drawable/crop__selectable_background</item>-->
+    </style>
+
+    <style name="Crop.ActionButtonText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingRight">20dp</item> <!-- Offsets left drawable -->
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="Crop.ActionButtonText.Done">
+        <item name="android:drawableLeft">@drawable/check</item>
+        <item name="android:text">@string/crop__done</item>
+    </style>
+
+    <style name="Crop.ActionButtonText.Cancel">
+        <item name="android:drawableLeft">@drawable/close</item>
+        <item name="android:text">@string/crop__cancel</item>
+    </style>
+
+    <style name="ProgressBar" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <!-- http://www.devsplanet.com/question/35634292 -->
+
+    <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetLongAppearance</item>
+    </style>
+
+    <style name="BottomSheetLongAppearance" parent="Widget.Design.BottomSheet.Modal">
+        <item name="behavior_peekHeight">600dp</item>
+    </style>
+
+</resources>

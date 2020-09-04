@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "995565613689",
+    "firebase_url": "https://sf-telehealth.firebaseio.com",
+    "project_id": "sf-telehealth",
+    "storage_bucket": "sf-telehealth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:995565613689:android:6e524d537c9cf008961aa8",
+        "android_client_info": {
+          "package_name": "com.sftelehealth.doctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "995565613689-dp8d10qgopa7llt3etdm5lr7vn0vkdal.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sftelehealth.doctor",
+            "certificate_hash": "ed3e031ee5908073b4c23ad09e13f260e1e8d190"
+          }
+        },
+        {
+          "client_id": "995565613689-6j8libug5piivqpc20rgmv2kknb3dhtm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6lAUZjdGS9kFuwDuSm4b9lToc6EoO9g8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "995565613689-6j8libug5piivqpc20rgmv2kknb3dhtm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:995565613689:android:e963e7bc8f84d5b2961aa8",
+        "android_client_info": {
+          "package_name": "com.sftelehealth.patient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "995565613689-umhgss782qcv405bshel5hkd9vnct0ia.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sftelehealth.patient",
+            "certificate_hash": "ed3e031ee5908073b4c23ad09e13f260e1e8d190"
+          }
+        },
+        {
+          "client_id": "995565613689-6j8libug5piivqpc20rgmv2kknb3dhtm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6lAUZjdGS9kFuwDuSm4b9lToc6EoO9g8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "995565613689-6j8libug5piivqpc20rgmv2kknb3dhtm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

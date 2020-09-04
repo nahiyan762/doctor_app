@@ -1,0 +1,195 @@
+apply plugin: 'com.android.library'
+
+
+android {
+
+    defaultPublishConfig "debug"
+
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
+    buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
+
+    defaultConfig {
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
+        // versionCode globalConfiguration.getAt("androidVersionCode")
+        // versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+                includeCompileClasspath = true
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "app", "environment"
+
+    productFlavors {
+        doctor24x7 {
+
+            // buildConfigField 'String', 'HOST_NAME', "https://9ydi9t5bb0.execute-api.ap-southeast-1.amazonaws.com/staging/api/v2/"
+            buildConfigField 'String', "APP_ENVIRONMENT", '"com.traktion.doctor"'
+
+            ext {
+                server = [dev: "https://api.doctor24x7.in/uat/api/v2/", prod: "https://api.doctor24x7.in/prod/api/v2/"] // "https://api.doctor24x7.in/prod/api/v2/"
+            }
+
+            dimension "app"
+        }
+        fortis {
+
+            // buildConfigField 'String', 'HOST_NAME', '"https://fortis-staging.doctor24x7.in/api/v1/"'
+
+            ext {
+                server = [dev: "https://fortis-staging.doctor24x7.in/api/v2/", prod: "https://fortis.doctor24x7.in/api/v1/"]
+            }
+
+            dimension "app"
+        }
+        iHealth {
+            ext {
+                server = [dev: "https://api-staging-v2.doctor24x7.in/api/v2/", prod: "https://api-v2.doctor24x7.in/api/v2/"]
+            }
+
+            dimension "app"
+        }
+        maldives {
+
+            buildConfigField 'String', "APP_ENVIRONMENT", '"com.ooredoo.doctor"'
+
+            ext {
+                server = [dev: "https://api.doctor24x7.in/uat/ooredoo/api/v2/", prod: "https://api.doctor24x7.in/prod/ooredoo/api/v2/"]
+            }
+
+            dimension "app"
+        }
+        dev {
+            //buildConfigField 'String', 'HOST', '"https://api-staging-v2.doctor24x7.in/api/v1/"'
+            dimension "environment"
+        }
+        prod {
+            //buildConfigField 'String', 'HOST', '"https://api-v2.doctor24x7.in/api/v1/"'
+            dimension "environment"
+        }
+        /*fortisDev {
+            buildConfigField 'String', 'HOST', '"https://fortis-staging.doctor24x7.in/api/v1/"'
+        }
+        fortisProd {
+            buildConfigField 'String', 'HOST', '"https://fortis.doctor24x7.in/api/v1/"'
+        }*/
+
+        /*applicationVariants.all { variant ->
+            def flavors = variant.productFlavors
+            // flavorDimensions "app" -> 0, "environment" -> 1
+            def app = flavors[0]
+            def environment = flavors[1]
+
+            variant.buildConfigField "String", "URL", "\"${app[environment.server]}\""
+        }*/
+    }
+
+    compileOptions.incremental = false
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+
+    lintOptions {
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        disable 'InvalidPackage'  // Some libraries have issues with this
+        disable 'OldTargetApi'    // Due to Roboelectric that modifies the manifest when running tests
+    }
+}
+
+repositories {
+    maven { url "https://s3.amazonaws.com/repo.commonsware.com" }
+}
+
+dependencies {
+
+    def dataDependencies = rootProject.ext.dataDependencies
+    def testDependencies = rootProject.ext.dataTestDependencies
+
+    implementation project(':domain')
+
+    // Dagger dependencies
+    compileOnly dataDependencies.javaxAnnotation
+    implementation dataDependencies.dagger
+    implementation dataDependencies.okHttp
+    implementation dataDependencies.gson
+
+    // Retrofit
+    implementation dataDependencies.retrofit
+    implementation dataDependencies.retrofitAdapter
+    implementation dataDependencies.gsonConvertor
+    implementation dataDependencies.loggingInterceptor
+
+    implementation dataDependencies.stetho
+    implementation dataDependencies.stethoOKHttp
+
+    /*// Room
+    implementation 'androidx.room:room-runtime:2.0.0-beta01'
+    // Room annotation processor
+    annotationProcessor 'androidx.room:room-compiler:2.0.0-beta01'
+    // Room RxJava support
+    implementation 'androidx.room:room-rxjava2:2.0.0-beta01'*/
+
+    // Room
+    implementation "android.arch.persistence.room:runtime:1.0.0"
+    // Room annotation processor
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+    // Room RxJava support
+    implementation "android.arch.persistence.room:rxjava2:1.0.0"
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Paging
+    implementation 'androidx.paging:paging-runtime:2.0.0-beta01'
+    implementation 'androidx.paging:paging-common:2.0.0-beta01'
+
+    // SafeROOM
+    implementation 'com.commonsware.cwac:saferoom.x:1.1.3'
+
+    // Old Secured preference
+    implementation 'com.scottyab:secure-preferences-lib:0.1.4'
+
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha4', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    implementation dataDependencies.appcompat_v7
+    testImplementation 'junit:junit:4.12'
+}
+
+android.libraryVariants.all { variant ->
+    // Setup URL
+    def flavors = variant.productFlavors
+    // flavorDimensions "app" -> 0, "environment" -> 1
+    def app = flavors[0]
+    def environment = flavors[1]
+
+    println "### BUILD PROPERTIES ### - HOST_NAME: ${app.ext.server[environment.name]}"
+
+    variant.buildConfigField("String", "HOST_NAME", "\"${app.ext.server[environment.name]}\"")
+}

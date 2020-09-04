@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <import type="android.view.View" />
+        <import type="com.sftelehealth.doctor.domain.model.Document" />
+
+        <variable
+            name="item"
+            type="com.sftelehealth.doctor.domain.model.Document"/>
+
+        <variable
+            name="listener"
+            type="com.sftelehealth.doctor.app.view.adapter.DocumentsViewPagerAdapter.DocumentPreviewListener"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.sftelehealth.doctor.app.view.custom.TouchImageView
+                android:id="@+id/document_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:visibility="@{item.getPreviewUrl == null ? View.GONE : View.VISIBLE}" >
+
+                <!-- android:visibility="@{item.getDocumentType == Document.IMAGE ? View.GONE : View.VISIBLE}" -->
+
+                <ImageView
+                    android:id="@+id/downloadPDF"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:srcCompat="@drawable/ic_downloadfull"
+                    android:onClick="@{() -> listener.onDocumentDownloadClicked(item.id)}"
+                    android:layout_margin="16dp"/>
+
+                <ImageView
+                    android:id="@+id/openPDF"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    app:srcCompat="@drawable/ic_view"
+                    android:onClick="@{() -> listener.onDocumentOpenClicked(item.id)}"
+                    android:layout_margin="16dp"/>
+
+            </FrameLayout>
+        </RelativeLayout>
+    </FrameLayout>
+
+</layout>

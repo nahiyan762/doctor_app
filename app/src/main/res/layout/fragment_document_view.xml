@@ -1,0 +1,47 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/background_light"
+        tools:context="com.sftelehealth.doctor.app.view.fragment.DocumentViewFragment">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/documents_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageButton
+                android:id="@+id/prev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:visibility="gone"
+                android:layout_marginLeft="10dp"
+                android:src="@android:drawable/arrow_down_float"
+                android:textColor="@color/colorSoftPrimary" />
+
+            <ImageButton
+                android:id="@+id/next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:visibility="gone"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:src="@android:drawable/arrow_up_float"
+                android:textColor="@color/colorSoftPrimary" />
+
+        </FrameLayout>
+
+    </FrameLayout>
+</layout>

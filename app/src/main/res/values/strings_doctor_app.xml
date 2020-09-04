@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- DOCTOR-CHECK-REGISTRATION-CLASS -->
+
+    <string name="GcmRegestrationNotSuccessful">GCM registration not Successful</string>
+    <!-- DOCTOR-CHECK-REGISTRATION-CLASS -->
+
+    <!-- DOCTOR-VERIFY-CLASS -->
+    <string name="PleaseEnterYourOtp">Please enter your Otp</string>
+    <string name="GcmRegistrationIdNotFound">Gcm registration id not available</string>
+    <!-- DOCTOR-VERIFY-CLASS -->
+
+    <!-- DOCTOR-PROFILE-UPDATE -->
+    <string name="PleaseEnterName">Please enter Name</string>
+    <string name="PleaseEnterQualification">Please enter qualification</string>
+    <string name="PleaseEnterEmail">Please enter email</string>
+    <string name="PleaseEnterPhoneNumber">Please enter phone number</string>
+    <string name="PleaseEnterHospital">Please enter Hospital</string>
+    <string name="PleaseEnterGender">Please enter Gender</string>
+    <string name="PleaseEnterWorkExperience">Please enter work experience</string>
+    <!-- DOCTOR-PROFILE-UPDATE -->
+
+    <!-- SELECT-IMAGE -->
+    <string name="SelectAnImage">Select an image</string>
+    <!-- SELECT-IMAGE -->
+
+    <!-- PROFILE -->
+    <string name="ProfilePic">Profile Pic</string>
+    <!-- PROFILE -->
+
+    <!-- TOOLBAR -->
+    <string name="toolbar_registration">Verify Mobile Number</string>
+    <string name="toolbar_verification">Signup</string>
+    <string name="toolbar_profile">Your Profile</string>
+    <string name="toolbar_doctor24_7">Doctor24x7</string>
+    <string name="toolbar_select_image">Select Image</string>
+    <string name="toolbar_time_slots">Time Slots</string>
+
+    <!-- TOOLBAR -->
+
+    <!-- ONLINE -->
+    <string name="noConnectivityMsg">No connectivty, Please connect to internet</string>
+    <!-- ONLINE -->
+
+    <string name="terms_conditions_line_one">By verifying your number you agree to the </string>
+    <string name="terms_conditions_line_two">TERMS &amp; CONDITIONS</string>
+    <string name="four_digit_code">4 digit code</string>
+    <string name="enter_otp_text">Please enter the 4 digit code sent through SMS</string>
+
+    <!-- TOAST -->
+    <string name="noImageSelected">No Image Selected</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <!--<string name="hello_blank_fragment">Hello blank fragment</string>-->
+    <!-- TOAST -->
+
+    <!-- Button -->
+    <string name="submit_button">Submit</string>
+
+    <!--DOCTOR PRESCRIPTION DETAILS-->
+    <string name="medicine_title">Medicines</string>
+    <string name="medical_advice_title">Medical Advice</string>
+    <string name="history_title">History &amp; Symptoms</string>
+    <string name="prescription_disclaimer">* This medical advice is based on the symptoms provided by you over the telephonic consult. This is not intended to replace a physical examination by a doctor. Please visit a Doctor/Hospital for further management if your condition does not improve.</string>
+
+    <!-- Registration Activity -->
+    <string name="verify_header">Verify Your Number</string>
+    <string name="verify_instruction">Please verify your mobile number</string>
+    <string name="phone_hint">Mobile Number</string>
+    <string name="phone_prefix">+91</string>
+    <string name="verify_btn">Verify</string>
+    <string name="tnc_text">By verifying your number you agree to the</string>
+    <string name="tnc">Terms &amp; Conditions</string>
+
+    <!-- Verification activity -->
+    <string name="verification_instruction">Wait while we try to fetch the verification code sent through SMS, or enter it manually</string>
+    <string name="verification_hint">6 digit code</string>
+    <string name="resend_btn">Resend</string>
+    <string name="signup_btn">Done</string>
+    <string name="save_btn">Save</string>
+    <string name="new_pres_done">Done</string>
+    <string name="preview_prescription">Preview Medical Advice</string>
+    <string name="send_prescription">Send Medical Advice</string>
+
+    <string name="Screen_profile">Your Profile</string>
+    <string name="Screen_home">Home</string>
+    <string name="Screen_Doctor247">Doctor 24x7</string>
+    <string name="Screen_time_slots">Time Slots</string>
+    <string name="Screen_about_us">About Us</string>
+    <string name="Screen_Patient_details">Patient Details</string>
+    <string name="Screen_New_Prescription">New Medical Advice</string>
+    <string name="Screen_Edit_Prescription">Edit Medical Advice</string>
+    <string name="Screen_Appointment_Details">Appointment Details</string>
+    <string name="Screen_Case_Details">Case Details</string>
+    <string name="Screen_Preview_Prescription">Preview Medical Advice</string>
+    <string name="Screen_Prescription">Medical Advice</string>
+    <string name="Screen_Case_Documents">Case Documents</string>
+    <string name="Screen_Update_Signature">Update Signature</string>
+
+    <string name="PleaseEnterHistorySymptoms">Please enter history and symptoms</string>
+    <string name="PleaseEnterMedicalAdvice">Please enter Medical Advice</string>
+    <string name="PleaseEnterMedicine">Please enter medicine</string>
+    <string name="PleaseEnterInstructions">Please enter instructions</string>
+    <string name="PleaseEnterQuantity">Please enter Quantity</string>
+    <string name="PleaseEnterDays">Please enter no of days</string>
+
+
+    <string name="PleaseAddAMedicine">Please add a Medicine</string>
+    <string name="PrescriptionAdded">Medical Advice Added</string>
+
+
+    <!-- tags for the views -->
+    <string name="holder">holder</string>
+    <string name="data_object">data_object</string>
+
+    <string name="SomethingWentWrong">Some thing went wrong</string>
+
+
+    <string name="NoActiveConsults">No Active Consults</string>
+    <string name="NoCallRequests">No Call Requests</string>
+
+
+    <string name="MedicineNotAdded">Medicine not Added</string>
+    <string name="DoYouStillWantToProceed">Do you still want to proceed?</string>
+
+
+    <string name="prescriptionWarning">* This medical advice is based on the symptoms provided by you over the telephonic consult. This is not intended to replace a physical examination by a doctor. Please visit a Doctor/Hospital for further management if your condition does not improve.</string>
+    <string name="about_us_info">Doctor 24x7 was created to make qualified, experienced and licensed Doctors accessible, instantly, for telephonic medical consults.</string>
+    <string name="tag_line">\nAvailable 24x7x365. From anywhere in India.</string>
+    <string name="team_message">The team behind the creation of Doctor 24x7 comprises alumni from IIMC, and BITS Pilani along with eminent Doctors.</string>
+
+
+    <string name="NoDocuments">No documents have been uploaded by patient</string>
+    <string name="NoPrescriptions">Medical Advice prescribed by you will be displayed here</string>
+
+
+    <string name="about_us">About Us</string>
+    <string name="Update">Update</string>
+    <string name="UpdateStringOne">Please Update</string>
+    <string name="UpdateStringTwo">Please update the app \n to get the best experience</string>
+
+
+    <!-- Signature Activtiy -->
+    <string name="action_save">Save</string>
+    <string name="action_clear">Clear</string>
+    <!--<string name="action_settings">Settings</string>-->
+    <string name="action_cleanup">Cleanup</string>
+    <string name="add_signature">Add Signature</string>
+    <string name="update_signature">Update Signature</string>
+
+    <string name="appointment_request">APPOINTMENT REQUEST</string>
+    <string name="appointment_confirmation">Please rotate your mobile screen clock wise once and update your signature by free hand drawing in the white space.</string>
+
+
+    <!-- Crop -->
+    <string name="crop__saving">Saving picture…</string>
+    <string name="crop__wait">Please wait…</string>
+    <string name="crop__pick_error">No image sources available</string>
+    <string name="crop__done">Done</string>
+    <string name="crop__cancel">Cancel</string>
+
+    <!-- Terms and Conditions -->
+    <string name="terms_and_conditions_url">http://www.doctor24x7.in/terms/</string>
+
+    <!-- Customer Support email ID -->
+    <string name="customer_support_email">aloke@traktion.in</string>
+    <string name="title_activity_confirmation">ConfirmationActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_profile_details">ProfileDetailsActivity</string>
+</resources>

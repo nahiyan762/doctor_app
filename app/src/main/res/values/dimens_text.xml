@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="header_size">16sp</dimen>
+    <dimen name="edittext_size">16sp</dimen>
+    <dimen name="medium_size">18sp</dimen>
+    <dimen name="doctor_name_size">18sp</dimen>
+    <dimen name="small_size">10sp</dimen>
+
+    <dimen name="normal_text">14sp</dimen>
+    <dimen name="hint_size">16sp</dimen>
+    <dimen name="lable_size">12sp</dimen>
+    <dimen name="dialog_title">26sp</dimen>
+
+
+    <!-- @used - info_text -->
+    <dimen name="text_10">10sp</dimen>
+
+    <!-- @used - hint_text -->
+    <dimen name="text_12">12sp</dimen>
+
+    <!-- @used - button_text -->
+    <dimen name="text_14">14sp</dimen>
+
+    <!-- @used - dashboard_number_metric -->
+    <dimen name="text_16">16sp</dimen>
+
+    <!-- @used - header_text, edittext_prefix_text -->
+    <dimen name="text_18">18sp</dimen>
+
+    <!-- @used - data_number_dashboard -->
+    <dimen name="text_28">28sp</dimen>
+
+    <dimen name="text_40">40sp</dimen>
+
+</resources>

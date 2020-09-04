@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="callbackRequest"
+            type="com.sftelehealth.doctor.domain.model.CallbackRequest" />
+
+        <variable
+            name="viewmodel"
+            type="com.sftelehealth.doctor.app.view.viewmodel.CallbackDetailsActivityFragmentViewModel"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/patient_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight=".8"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/patient_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@{callbackRequest.patient.getName}" />
+
+            <TextView
+                android:id="@+id/patient_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{callbackRequest.gender != null ? callbackRequest.gender + ` ` + callbackRequest.getPatientAge : ` `}" />
+
+            <TextView
+                android:id="@+id/patient_blood_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blood Group"
+                android:visibility="invisible"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/emergency_call_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight=".1"
+            android:gravity="center"
+            android:visibility="@{safeUnbox(viewmodel.isEmergencyCallContainerVisible) ? View.VISIBLE : View.INVISIBLE}"
+            android:orientation="vertical" >
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/emergency_call_button"
+                android:visibility="visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginRight="@dimen/fab_margin"
+                android:scaleType="center"
+                app:useCompatPadding="true"
+                app:fabSize="mini"
+                android:src="@drawable/ic_phone"
+                android:background="@drawable/bg_circle_blue" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

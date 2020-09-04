@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sftelehealth.doctor.app.view.custom.CustomFontTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@android:id/text1"
+    style="@style/TextAppearance.Info"
+    android:layout_width="0dp"
+    android:layout_height="32dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:background="?android:selectableItemBackground"
+    android:gravity="center"
+    android:textAllCaps="true"
+    android:textColor="@color/white"
+    android:textSize="12sp"
+    android:layout_weight=".5"
+    android:maxLines="1" />

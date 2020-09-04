@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/video_call_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/video_call_image"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:srcCompat="@drawable/video" />
+
+        <com.sftelehealth.doctor.app.view.custom.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/video_call_image"
+            style="@style/TextAppearance.Info"
+            android:textColor="@color/colorPrimary"
+            app:fontName="bold"
+            android:text="video" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/audio_call_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/audio_call_image"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:srcCompat="@drawable/phone_blue"/>
+
+        <com.sftelehealth.doctor.app.view.custom.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/video_call_image"
+            style="@style/TextAppearance.Info"
+            android:textColor="@color/colorPrimary"
+            app:fontName="bold"
+            android:text="audio" />
+
+    </LinearLayout>
+
+</LinearLayout>

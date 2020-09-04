@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="medicine"
+            type="com.sftelehealth.doctor.domain.model.Medicine" />
+
+        <variable
+            name="listener"
+            type="com.sftelehealth.doctor.app.listener.PrescriptionEventListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/remove_medicine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="4dp"
+                android:onClick="@{() -> listener.removeMedicine(medicine.name)}"
+                app:srcCompat="@android:drawable/ic_delete" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/medicineName"
+            style="@style/TextAppearance.Heading.Normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{medicine.name + ` (` + medicine.type + `)`}"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/instructions"
+            style="@style/TextAppearance.Info.Normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{medicine.instruction}" />
+
+        <TextView
+            android:id="@+id/dosage"
+            style="@style/TextAppearance.Info.Normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{medicine.isDosageVisible ? View.VISIBLE : View.INVISIBLE}"
+            android:text="@{medicine.getDosageFormatted}" />
+
+        <LinearLayout
+            android:id="@+id/dosageGraphic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dosage_morning"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="1dip"
+                android:background="@drawable/background_text_dosage"
+                android:gravity="center"
+                android:text="@{medicine.dosageMorning}"
+                android:textColor="@color/colorPrimary" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0.1dip"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/dosage_afternoon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="0dip"
+                android:background="@drawable/background_text_dosage"
+                android:gravity="center"
+                android:text="@{medicine.dosageAfternoon}"
+                android:textColor="@color/colorPrimary" />
+
+            <View
+                android:layout_width="0dip"
+                android:layout_height="0.1dip"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/dosage_night"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="0dip"
+                android:background="@drawable/background_text_dosage"
+                android:gravity="center"
+                android:text="@{medicine.dosageEvening}"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

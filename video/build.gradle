@@ -1,0 +1,136 @@
+apply plugin: 'com.android.library'
+
+android {
+
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    /*sourceSets {
+        main {
+            aidl.srcDirs = ['src/main/aidl', 'src/main/aidl/'] 
+            jni.srcDirs =['src/main/jni', 'src/main/jni/']
+        }
+    }*/
+    dataBinding {
+        enabled = true
+    }
+
+    flavorDimensions "app", "environment"
+
+    productFlavors {
+        doctor24x7 {
+            buildConfigField "String", "PACKAGE_NAME", '"com.traktion.doctor"'
+            dimension "app"
+        }
+        fortis { dimension "app" }
+        iHealth { dimension "app" }
+        maldives {
+            buildConfigField "String", "PACKAGE_NAME", '"com.ooredoo.doctor"'
+            dimension "app"
+        }
+        dev {
+            dimension "environment"
+            buildConfigField 'String', 'AGORA_APP_ID', '"1f2f1b04d7904603ad97d1a373f45153"'
+            buildConfigField 'String', 'AGORA_CERTIFICATE', '"4c387d04005b429da3774ad63c4d9445"'
+        }
+        prod {
+            dimension "environment"
+            buildConfigField 'String', 'AGORA_APP_ID', '"44d73e823a914676a9038a71a3ebbf98"'
+            buildConfigField 'String', 'AGORA_CERTIFICATE', '"5de5b571604240f5a3175c1959a54525"'
+        }
+    }
+
+    packagingOptions {
+        pickFirst 'lib/arm64-v8a/libvideo.so'
+        pickFirst 'lib/armeabi-v7a/libvideo.so'
+        pickFirst 'lib/x86/libvideo.so'
+        pickFirst 'lib/x86_64/libvideo.so'
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path 'Android.mk'
+        }
+    }
+
+    compileOptions.incremental = false
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    splits {
+        abi {
+
+            // Enables building multiple APKs per ABI.
+            enable false
+
+            // By default all ABIs are included, so use reset() and include to specify that we only
+            // want APKs for arm64-v8a, armeabi-v7a, x86 and x86_64.
+            // Resets the list of ABIs that Gradle should create APKs for to none.
+            // reset()
+
+            // Specifies a list of ABIs that Gradle should create APKs for.
+            // include 'arm64-v8a', 'armeabi-v7a', 'x86'
+
+            // Specifies that we do not want to also generate a universal APK that includes all ABIs.
+            universalApk true
+        }
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":data")
+    implementation project(":domain")
+    /*androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })*/
+
+    def videoDependencies = rootProject.ext.videoDependencies
+    implementation videoDependencies.appcompat_v7
+    implementation videoDependencies.design
+    implementation videoDependencies.rxJava
+    implementation videoDependencies.rxAndroid
+    //testImplementation 'junit:junit:4.12'
+    implementation videoDependencies.support_v4
+    implementation videoDependencies.gson
+
+    implementation videoDependencies.cardview_v7
+
+    implementation videoDependencies.constraintLayout
+
+    // For lifecycle Java 8 support
+    implementation videoDependencies.lifecycleJava8
+
+    // LiveData and ViewModel
+    implementation videoDependencies.lifecycle
+
+    // Dagger 2
+    annotationProcessor presentationDependencies.daggerCompiler
+    implementation presentationDependencies.dagger
+
+    // Development only
+    compileOnly presentationDependencies.javaxAnnotation
+
+    implementation 'androidx.annotation:annotation:1.0.1'
+
+    // annotationProcessor videoDependencies.daggerCompiler
+    // implementation videoDependencies.dagger
+}

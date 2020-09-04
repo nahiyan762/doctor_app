@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="medicine"
+            type="com.sftelehealth.doctor.domain.model.Medicine" />
+
+        <variable
+            name="listener"
+            type="com.sftelehealth.doctor.app.listener.PrescriptionEventListener" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minHeight="240dp">
+
+        <LinearLayout
+            android:id="@+id/medicine_form_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/medicine_name_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/medicine_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Medicine"
+                        android:inputType="text|textCapSentences"
+                        android:text="@={medicine.name}"
+                        android:textColor="@color/grey_text"
+                        android:textColorHint="@android:color/white"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/add_medicine_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_marginRight="4dp"
+                    android:onClick="@{(view) -> listener.addMedicine()}"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:paddingTop="12dp"
+                    android:src="@android:drawable/ic_input_add" />
+
+            </FrameLayout>
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/medicine_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="12dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/grey_text" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/instructions_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/medicine_category"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp">
+
+                <EditText
+                    android:id="@+id/instructions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Instructions"
+                    android:inputType="text|textCapSentences"
+                    android:nextFocusDown="@id/morning_dosage"
+                    android:nextFocusForward="@id/morning_dosage"
+                    android:text="@={medicine.instruction}"
+                    android:textColor="@color/grey_text"
+                    android:textColorHint="@android:color/white"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--<include
+                android:id="@+id/dosage_container"
+                layout="@layout/dosage_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/instructions_container" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/morning_dosage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Morning"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:nextFocusDown="@id/afternoon_dosage"
+                        android:nextFocusForward="@id/afternoon_dosage"
+                        android:text="@={medicine.dosageMorning}"
+                        android:textColor="@color/grey_text"
+                        android:textColorHint="@android:color/white"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/afternoon_dosage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Afternoon"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:nextFocusDown="@id/evening_dosage"
+                        android:nextFocusForward="@id/evening_dosage"
+                        android:text="@={medicine.dosageAfternoon}"
+                        android:textColor="@color/grey_text"
+                        android:textColorHint="@android:color/white"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/evening_dosage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Evening"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:nextFocusDown="@id/duration"
+                        android:nextFocusForward="@id/duration"
+                        android:text="@={medicine.dosageEvening}"
+                        android:textColor="@color/grey_text"
+                        android:textColorHint="@android:color/white"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/duration_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp">
+
+                <EditText
+                    android:id="@+id/duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Duration (days)"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:nextFocusDown="@id/preview_prescription_button"
+                    android:nextFocusForward="@id/preview_prescription_button"
+                    android:text="@={medicine.duration}"
+                    android:textColor="@color/grey_text"
+                    android:textColorHint="@android:color/white"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+        <com.sftelehealth.doctor.app.view.custom.CustomFontTextView
+            android:id="@+id/desktop_app_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+    </FrameLayout>
+
+</layout>
