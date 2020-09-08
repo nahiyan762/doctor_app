@@ -113,7 +113,7 @@ android {
 
             // These fields will be same as dev and prod
             manifestPlaceholders = [manifestApplicationId          : "${applicationId}",
-                                    onesignal_app_id               : "<onesignal_app_id>",
+                                    onesignal_app_id               : "1dd6da6f-d222-4c38-8c96-21ceae492f9c",
                                     onesignal_google_project_number: "<google_project_number>"]
 
             dimension "app"

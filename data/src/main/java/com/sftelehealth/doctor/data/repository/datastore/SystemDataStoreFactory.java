@@ -113,9 +113,6 @@ public class SystemDataStoreFactory implements SystemDataStore {
                         .doctorDao()
                         .getDoctor();
 
-                response.setPhoneNumber(tempDoctor.getPhone());
-                if (tempDoctor.getDoctorCategories() != null && tempDoctor.getDoctorCategories().size() != 0)
-                    response.setHasMigratedToDoctorCategories(true);
 
                 if (tempDoctor == null) {
                     // Then this is the first login after transitioning to the new app
@@ -123,6 +120,11 @@ public class SystemDataStoreFactory implements SystemDataStore {
                     response.setDoctorObjectAvailable(false);
 
                 } else {
+
+                    response.setPhoneNumber(tempDoctor.getPhone());
+                    if (tempDoctor.getDoctorCategories() != null && tempDoctor.getDoctorCategories().size() != 0)
+                        response.setHasMigratedToDoctorCategories(true);
+
                     response.setDoctorObjectAvailable(true);
                     Doctor doctor = mapper.transformToData(DatabaseObject.getInstance(context)
                             .doctorDao()
